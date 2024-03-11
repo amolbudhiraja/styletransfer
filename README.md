@@ -10,6 +10,17 @@ An implementation of the paper: A Neural Algorithm of Artistic Style
 * **Authors**: Leon A. Gatys, Alexander S. Ecker, Matthias Bethge
 * **Link**: https://arxiv.org/abs/1508.06576
 
+# Installation
+For enhanced speed and processing power, it is highly recommended to run this notebook with GPUs. I highly recommend using online services like Google Collab that enable the usage of GPUs when running this code. 
+
+If you are trying to run the code locally, please refer to the falling steps: 
+
+1. Clone this repository.
+2. Create a virtual environment: `python3 -m venv venv`
+3. Active the virtual environment: `source venv/bin/activate`
+4. Install the dependencies: `pip install -r requirements.txt`
+5. Run the code in `main.py`!
+
 # Approach
 
 To transfer the artistic style of one image to another, we want to split this problem into two main parts: 
