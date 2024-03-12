@@ -48,27 +48,33 @@ According to the paper we should observe that the lower layers yield an almost p
 
 ## Loss Function
 Based on the paper, we will use the following loss function: 
-$L_{content}(\vec{p}, \vec{x}, \vec{l})=\frac{1}{2}\sum_{i,j}{(F^{l}_{ij}-P^{l}_{ij})^{2}}$
-Where $\vec{p}, \vec{x}$ are the original image and the generated respectively, and $P^{l}, F^{l}$ are their respective feature representations per layer l. 
+
+$L_{\mathbf{p}, \mathbf{x}, \mathbf{l}} = \frac{1}{2} \sum_{i,j} (F^l_{ij} - P^l_{ij})^2$
+
+where $\vec{p}, \vec{x}$ are the original image and the generated respectively, and $P^{l}, F^{l}$ are their respective feature representations per layer l. 
 
 ## Gram Matrix
 
 On top of the CNN, we will build a style representation that computes the correlations
-between the different filter responses. Specificallyl, we will compute a Graph Matrix: $G^{l} \in \mathbb{R}^{N_l \times N_l}$ where $G^{l}_{ij}$ is the inner product between the vectorized feature map i and j in layer l: 
+between the different filter responses. Specificallyl, we will compute a Graph Matrix: 
 
-$F^{l}_{ij} = \sum_{k}{F^{l}_{ik}F^{l}_{jk}}$. 
+$$G^{l} \in \mathbb{R}^{N_l \times N_l}$$
+
+where $G^{l}_{ij}$ is the inner product between the vectorized feature map i and j in layer l: 
+
+$F^l_{ij} = \sum_k F^l_{ik} F^l_{jk}$
 
 To compute another image that matches the style representation of the original image, we can gradient descent from a white noise image and apply the following loss function that assess the mean-squared distance between the entires of the Gram matrix of the original matrix and the image to be generated: 
 
-$L_{style}(\vec{a}, \vec{x}) = \sum_{l=0}^{L}w_{l}E_{l}$
+$$L_{style}(\vec{a}, \vec{x}) = \sum_{l=0}^{L}w_{l}E_{l}$$
 
 where,
 
-$E_{l} = \frac{1}{4N^{2}_{l}M^{2}_{l}}\sum_{i,j}{(G_{ij}^{l} - A_{ij}^{l})^{2}}$
+$E_l = \frac{1}{4N^2_lM^2_l} \sum_{i,j} (G^l_{ij} - A^l_{ij})^2$
 
 We can combine these loss functions together and define a squared error loss function between the two feature representations: 
 
-$L_{total}(\vec{p}, \vec{a}, \vec{x}) = \alpha L_{content}(\vec{p}, \vec{x}) + \beta L_{content}(\vec{a}, \vec{x})$
+$$L_{total}(\vec{p}, \vec{a}, \vec{x}) = \alpha L_{content}(\vec{p}, \vec{x}) + \beta L_{content}(\vec{a}, \vec{x})$$
 
 where $\alpha, \beta$ are weighing factors for the content and style reconstruction respectively. 
 
