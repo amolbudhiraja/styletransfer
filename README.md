@@ -86,6 +86,13 @@ The final algorithm turned out great! It is able to succesfully transfer the sty
 
 To measure the impact of the weight and number of optimizer steps on the results of the model, I tried various $\alpha$ and $\beta$ values and step counts. Here are the results from them: 
 
+## Inputs
+To test the model, I used two pictures: (1) My favorite basketball player Lebron James and (2) A design pattern I found online. Here are the original images. 
+
+![Lebron James Original Image](data/lebronjames.jpeg)
+
+![Style Image - Original](data/texture_image.jpeg)
+
 ## Changing Style Weight
 As expected an increase in style weight corresponded to a greater emphasis of style in the resulting image. A similar trend was noticed with changing content weight - hence it is omitted from this presentation. 
 
